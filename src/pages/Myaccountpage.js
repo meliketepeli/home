@@ -1,11 +1,14 @@
 import React from "react";
-import { Header } from "../partials/Header";
+import { withLayouts } from "../partials/layouts";
 
-export const Myaccountpage = () => {
+
+const Myaccountpage = () => {
     return (
         <div>
-            <Header />
             Welcome to the My Account Page!
         </div>
     );
 };
+
+
+export default withLayouts(Myaccountpage);

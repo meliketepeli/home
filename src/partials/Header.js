@@ -1,22 +1,25 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import styled from "styled-components";
 import logo from "../assets/logo-shopping-bag.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../providers/AppProvider";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const StyledHeader = styled.div`
   height: 12vh;
   background-color: #6d375f;
-  padding: 0 80px;
+  padding: 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow:0px 2px 20px black;
 
   .logo-container {
-    flex: 0.5;
+    flex: 0.3;
+    margin-right: 100px;
 
-    img {
-      height: 8vh;
+    img{
+    height:8vh;
     }
   }
 
@@ -32,14 +35,16 @@ const StyledHeader = styled.div`
 
   ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 50px;
+    margin: 50px;
     display: flex;
+    gap: 50px;
   }
 
   ul a {
+    float: left;
     color: #fff;
-    margin: 0 30px;
+    margin: 0 50px;
     font-size: 20px;
     text-decoration: none;
   }
@@ -49,7 +54,7 @@ const StyledHeader = styled.div`
   }
 
   ul a:not(:first-child) {
-    margin-left: 20px;
+    margin-left: 30px;
   }
 
   .bag {
@@ -60,6 +65,17 @@ const StyledHeader = styled.div`
 
 export const Header = () => {
   const { state, dispatch } = useContext(AppContext);
+  const [user, setUser] = useLocalStorage("user");
+  const navigate = useNavigate();
+
+  const handleLogin = useCallback(() => {
+    setUser("melike");
+  }, [setUser]);
+
+  const handleLogout = useCallback(() => {
+    setUser("");
+    navigate("/");
+  }, [setUser, navigate]);
 
   return (
     <StyledHeader>
@@ -72,18 +88,12 @@ export const Header = () => {
           <Link to="/about">ABOUT US</Link>
           <Link to="/my-account">MY ACCOUNT</Link>
 
-          {state.loggedIn ? (
-            <div
-              className="bag"
-              onClick={() => dispatch({ type: "logout" })}
-            >
-              LOGOUT - {state.user}
+          {user ? (
+            <div className="bag"  onClick={handleLogout}>
+              LOGOUT - {user}
             </div>
           ) : (
-            <div
-              className="bag"
-              onClick={() => dispatch({ type: "login", payload: "melike" })}
-            >
+            <div className="bag"  onClick={handleLogin}>
               LOGIN
             </div>
           )}
