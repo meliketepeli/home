@@ -36,16 +36,27 @@ z-index:99;
 background-color: #667292;
 min-width:130px;
 border-radius:10px;
-padding:20px;
+padding:10px 20px;
 text-align:center;
-    a{
+gap:10px;
+max-height: 300px;  
+overflow-y: auto;
+}
+
+.dropdown-content.show{
+display:flex;
+}
+
+.dropdown-content a{
     text-decoration:none;
     color:white;
+    display: block;  
+    padding: 8px 0;
+}
 
-    :hover{
+a:hover{
     opacity:0.7;
     }
-}
 
 label{
     :hover{
@@ -54,11 +65,6 @@ label{
     }
 }
 
-.show{
-display:flex;
-
-}
-}
 `;
 
 export const ProfileDropdown = ({userName, handleLogout}) => {
@@ -71,7 +77,7 @@ export const ProfileDropdown = ({userName, handleLogout}) => {
         setVisible ((c) => !c);
     }, []);
 
-    useClickOutside(refDropdown, ()=> setVisible(false));
+    useClickOutside(refDropdown, () => setVisible(false));
 
     return ( 
 <StyledProfileDropdown ref={refDropdown}> 

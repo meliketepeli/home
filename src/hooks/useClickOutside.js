@@ -18,7 +18,7 @@ function handleOutsideClick(event){
         document.removeEventListener('mousedown', handleOutsideClick);
     }
 
-}, []);
+}, [ref, callbackFn]);
 
 
 }
