@@ -4,6 +4,8 @@ import logo from "../assets/logo-shopping-bag.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../providers/AppProvider";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { ProfileDropdown } from "../components/ProfileDropdown";
+
 
 const StyledHeader = styled.div`
   height: 12vh;
@@ -35,16 +37,15 @@ const StyledHeader = styled.div`
 
   ul {
     list-style: none;
-    padding: 50px;
-    margin: 50px;
+    padding: 0px;
+    margin: 0px;
     display: flex;
-    gap: 50px;
+    gap: 20px;
   }
 
   ul a {
-    float: left;
+    transition: opacity 0.3s;
     color: #fff;
-    margin: 0 50px;
     font-size: 20px;
     text-decoration: none;
   }
@@ -60,6 +61,9 @@ const StyledHeader = styled.div`
   .bag {
     margin-left: 50px;
     cursor: pointer;
+    backgorund-color: #b0aac0;
+    border: none;
+    padding: 5px 20px;
   }
 `;
 
@@ -89,13 +93,16 @@ export const Header = () => {
           <Link to="/my-account">MY ACCOUNT</Link>
 
           {user ? (
-            <div className="bag"  onClick={handleLogout}>
-              LOGOUT - {user}
-            </div>
+            // <button className="bag"  onClick={handleLogout}>
+            //   LOGOUT - {user}
+            // </button>
+
+            <ProfileDropdown userName={user} handleLogout= {handleLogout}/>
+
           ) : (
-            <div className="bag"  onClick={handleLogin}>
+            <button className="bag"  onClick={handleLogin}>
               LOGIN
-            </div>
+            </button>
           )}
         </ul>
       </nav>
