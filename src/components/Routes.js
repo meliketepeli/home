@@ -4,9 +4,9 @@ import  Homepage  from "../pages/Homepage";
 import  Aboutpage  from "../pages/Aboutpage";
 import  Myaccountpage  from "../pages/Myaccountpage";
 import { Bagpage } from "../pages/Bagpage";
-import { AppContext } from "../providers/AppProvider";
 import { Layout } from "./Layout";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { Loginpage } from "../pages/Loginpage";
 
 
 export const AppRoutes = () => {
@@ -14,6 +14,7 @@ export const AppRoutes = () => {
         <Router>
             <Layout>
                 <Routes>
+                    <Route path="/login" element={<Loginpage />} />
                     <Route path="/" element={<Homepage />} />
                     <Route path="/about" element={<Aboutpage />} />
                     <Route path="/bag" element={<Bagpage />} />
@@ -35,5 +36,5 @@ export const AppRoutes = () => {
 const PrivateRoute = ({ children }) => {
    const [user]= useLocalStorage("user");
 
-    return user ? children : <Navigate to="/" replace />;
+    return user ? children : <Navigate to="/login" replace />;
 };

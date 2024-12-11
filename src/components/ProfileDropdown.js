@@ -3,6 +3,7 @@ import userIcon from "../assets/user.png.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useClickOutside } from "../hooks/useClickOutside";
+import {CustomModal} from '../components/CustomModal'; 
 
 const StyledProfileDropdown = styled.div`
 
@@ -11,7 +12,7 @@ position:relative;
 .user-button{
 background-color: #b0aac0;
 border:none;
-color:#8d9db6;
+color:black;
 border-radius:30px;
 padding: 5px 15px;
 display:flex;
@@ -36,36 +37,59 @@ z-index:99;
 background-color: #667292;
 min-width:130px;
 border-radius:10px;
-padding:10px 20px;
-text-align:center;
-gap:10px;
-max-height: 300px;  
-overflow-y: auto;
+padding: 10px; 
+
+align-items: center;
+text-align: center;
+left: 50%;
+transform: translateX(-50%); /* Ortalamak için */
+gap: 2px; /* Öğeler arası boşluk */
+
 }
 
-.dropdown-content.show{
-display:flex;
+.dropdown-content a,
+.dropdown-content label {
+  text-decoration: none;
+  color: white;
+  display: block; /* Her öğeyi blok olarak tanımlar */
+  width: 100%; 
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* İçerik arası boşluk */
+  text-align: center; /* Metni sola hizala */
+  border-radius: 5px; /* Hafif köşeli yapı */
+  transition: background-color 0.3s; /* Hover animasyonu */
 }
 
-.dropdown-content a{
-    text-decoration:none;
-    color:white;
-    display: block;  
-    padding: 8px 0;
+.dropdown-content a:hover,
+.dropdown-content label:hover {
+  background-color: #b0aac0; /* Hover rengini değiştir */
+  color: black; /* Yazı rengini değiştir */
 }
 
-a:hover{
-    opacity:0.7;
-    }
-
-label{
-    :hover{
-    color:#b0aac0;
-    curser:pointer;
-    }
+.show {
+  display: flex;
 }
 
 `;
+
+const SectionLogout = ({handleLogout}) => {
+  const[visible, setVisible] = useState(false); //modal için
+
+  return (
+    <>
+    <label onClick={() => setVisible(true)}> Logout</label>
+    <CustomModal
+    displayModal={visible}
+    onCancel={() => setVisible(false)}
+    onOk={handleLogout} 
+    > 
+    Are you sure you want to log out?
+    </CustomModal>
+    </>
+  );
+};
+
 
 export const ProfileDropdown = ({userName, handleLogout}) => {
 
@@ -89,7 +113,7 @@ export const ProfileDropdown = ({userName, handleLogout}) => {
     <Link to="/profile">Profile</Link>
     <Link to="/favorites">Favorites</Link>
     <Link to="/history">History</Link>
-    <label onClick ={handleLogout}> LOGOUT </label>
+    <SectionLogout handleLogout ={handleLogout} /> 
  </div>
  </StyledProfileDropdown>
 

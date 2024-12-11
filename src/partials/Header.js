@@ -61,9 +61,16 @@ const StyledHeader = styled.div`
   .bag {
     margin-left: 50px;
     cursor: pointer;
-    backgorund-color: #b0aac0;
-    border: none;
-    padding: 5px 20px;
+    padding: 5px 15px;
+    background-color: #b0aac0;
+    border:none;
+    color:black;
+    border-radius:30px;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    min-width:130px;
+    font-size:16px;
   }
 `;
 
@@ -78,7 +85,7 @@ export const Header = () => {
 
   const handleLogout = useCallback(() => {
     setUser("");
-    navigate("/");
+    navigate("/login");
   }, [setUser, navigate]);
 
   return (
@@ -93,9 +100,6 @@ export const Header = () => {
           <Link to="/my-account">MY ACCOUNT</Link>
 
           {user ? (
-            // <button className="bag"  onClick={handleLogout}>
-            //   LOGOUT - {user}
-            // </button>
 
             <ProfileDropdown userName={user} handleLogout= {handleLogout}/>
 
