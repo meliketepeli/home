@@ -6,7 +6,7 @@ import  Myaccountpage  from "../pages/Myaccountpage";
 import { Bagpage } from "../pages/Bagpage";
 import { Layout } from "./Layout";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { Loginpage } from "../pages/Loginpage";
+import { Loginpage } from "../pages/login/Loginpage";
 
 
 export const AppRoutes = () => {
@@ -14,7 +14,14 @@ export const AppRoutes = () => {
         <Router>
             <Layout>
                 <Routes>
-                    <Route path="/login" element={<Loginpage />} />
+                    <Route 
+                        path="/login" 
+                        element={
+                            <GuestRoute> 
+                        <Loginpage />
+                        </GuestRoute>
+                    } 
+                    />
                     <Route path="/" element={<Homepage />} />
                     <Route path="/about" element={<Aboutpage />} />
                     <Route path="/bag" element={<Bagpage />} />
@@ -32,9 +39,14 @@ export const AppRoutes = () => {
     );
 };
 
-// PrivateRoute Bileşeni
 const PrivateRoute = ({ children }) => {
    const [user]= useLocalStorage("user");
 
     return user ? children : <Navigate to="/login" replace />;
 };
+
+const GuestRoute = ({ children }) => {
+    const [user]= useLocalStorage("user");
+ 
+     return !user ? children : <Navigate to="/" replace />;
+ };

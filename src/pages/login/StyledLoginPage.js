@@ -1,11 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import loginIcon from "../assets/arrow-icon.png.png";
-import loginImage from "../assets/left-image.png.jpeg";
-import { useForm } from "react-hook-form";
 
-
-const StyledLoginpage = styled.div`
+export const StyledLoginpage = styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
@@ -37,12 +32,29 @@ height:60%;
         form{
         
         .form-element{
-
+            position:relative;
             :not(:first-child){
             margin-top:20px;
             }
             margin-left:40%;
-            
+
+            img{
+                position:absolute;
+                top:5px;
+                right:5px;
+                height:25px;
+                weight:25px;
+                margin:10px;
+                cursor:pointer;
+                    }
+
+                span{
+                color: #d64161;
+                font-size:13px;
+                
+                
+                }
+        
         }
             input{
             width:99%;
@@ -58,7 +70,7 @@ height:60%;
 
             ::placeholder{
             color: #6b5b95;
-
+A
             }
 
             :focus{
@@ -69,9 +81,9 @@ height:60%;
          .form-element-submit{
             text-align:right;
             img{
-            height:30%;  //bunları sil
-            width:30%;  //bunları sil
-            margin-right:-50px
+            height:8vh;  
+            width:30%;  
+            margin-right:-20px
             }
 
             button{
@@ -113,45 +125,3 @@ height:60%;
 
 
 `;
-
-
-export const Loginpage = () => {
-
-const {register,handleSubmit, formState: {errors} }=useForm();
-
-const onSubmit = (data) => console.log(data);
-
-    return  <StyledLoginpage> 
-        <div className="login-container">
-         <div className="left"> 
-
-            <img src={loginImage} alt="login"/>
-         </div>
-         <div className="right"> 
-
-            <form onSubmit = {handleSubmit(onSubmit)}>
-
-            <div className="form-element"> 
-                <input {...register("name")} placeholder="Username" type="text"/>
-            </div>
-            <div className="form-element"> 
-                <input {...register("password")} placeholder="Password" type="text"/>
-            </div>
-
-                <div className="form-element form-element-submit ">
-                     <button>
-                        <img src={loginIcon} alt="login-btn-icon"/> 
-                        </button>
-                </div>
-            </form>
-
-            <div className="sign-up-info">Not registered yet? </div>
-            <div className="sign-up-btn-container">
-            <button>Register</button>
-            </div>
-         </div>
-    </div>
-        
-         </StyledLoginpage>;
- 
-};

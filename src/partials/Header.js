@@ -75,13 +75,14 @@ const StyledHeader = styled.div`
 `;
 
 export const Header = () => {
-  const { state, dispatch } = useContext(AppContext);
+
   const [user, setUser] = useLocalStorage("user");
   const navigate = useNavigate();
+  
 
   const handleLogin = useCallback(() => {
-    setUser("melike");
-  }, [setUser]);
+    navigate("/login");
+  }, [navigate]);
 
   const handleLogout = useCallback(() => {
     setUser("");
