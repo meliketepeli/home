@@ -1,6 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import styled from "styled-components";
 import logo from "../assets/logo-shopping-bag.svg";
+import logoBasket from "../assets/logo-basket.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../providers/AppProvider";
 import { useLocalStorage } from "../hooks/useLocalStorage";
@@ -15,20 +16,21 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow:0px 2px 20px black;
-  width:100vw;
-
+  width:100%;
 
   .logo-container {
-    flex: 0.3;
-    margin-left: 100px;
+    flex: 0.3;   
 
     img{
     height:8vh;
+   
     }
   }
 
   .menu-container {
     flex: 1;
+
+  }
     
   }
 
@@ -44,16 +46,17 @@ const StyledHeader = styled.div`
     margin: 0px;
     display: flex;
     gap: 20px;
+    
   }
 
   ul a {
     transition: opacity 0.3s;
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
     text-decoration: none;
-    margin:2px;
-    margin-left:150px;
+    margin-left:50px;
     padding:50px;
+    margin-top:30px;
   }
 
   ul a:hover {
@@ -61,15 +64,31 @@ const StyledHeader = styled.div`
   }
 
   ul a:not(:first-child) {
-    margin:2px;
-    margin-left:-3px;
+    margin-left:50px;
+    transition: opacity 0.3s;
+    color: #fff;
+    font-size: 22px;
+    text-decoration: none;
+    margin-left:50px;
+    padding:50px;
+    margin-top:30px;
+}
+    ul a:not(:first-child) {
+    .logoBasket {
+    flex: 0.3;
+    margin-right:20px;
+    margin-top:-10px;
+
+    img{
+    height:8vh;
+    }
     
   }
 
   .bag {
-    margin-left: 50px;
+    margin-left: 70px;
+    margin-top:10px;
     cursor: pointer;
-    padding: 5px 15px;
     background-color: #b0aac0;
     border:none;
     color:black;
@@ -106,7 +125,10 @@ export const Header = () => {
         <ul>
           <Link to="/">SHOP</Link>
           <Link to="/about">ABOUT US</Link>
-          <Link to="/my-account">MY ACCOUNT</Link>
+          <Link to="/my-bag">
+          <div className="logoBasket">
+        <img src={logoBasket} alt="logoBasket" />
+      </div>     </Link>
 
           {user ? (
 

@@ -15,8 +15,8 @@ border:none;
 color:black;
 border-radius:30px;
 padding: 5px 15px;
-margin-top:50px;
-margin-left:30px;
+margin-top:80px;
+margin-left:100px;
 display:flex;
 justify-content:space-evenly;
 align-items:center;
@@ -39,12 +39,12 @@ z-index:100;
 background-color: #667292;
 min-width:130px;
 border-radius:10px;
-padding: 10px; 
+padding: 2px; 
 margin-left:15px;
 align-items: center;
 text-align: center;
 left: 50%;
-transform: translateX(-50%); /* Ortalamak için */
+transform: translateX(-25%); /* Ortalamak için */
 gap: 2px; /* Öğeler arası boşluk */
 font-size:22px;
 color:black;
@@ -57,16 +57,19 @@ color:black;
   width: 100%; 
   justify-content: center;
   align-items: center;
-  padding: 10px; /* İçerik arası boşluk */
+  padding: 1px; /* İçerik arası boşluk */
   text-align: center; /* Metni sola hizala */
   border-radius: 5px; /* Hafif köşeli yapı */
   transition: background-color 0.3s; /* Hover animasyonu */
   margin-left:-10px;
+  margin-bottom:1px;
 }
 .dropdown-content label {
   text-decoration: none;
-  display: block; 
+  display: flex; 
   width: 100%; 
+  margin-left:-5px;
+  margin-top:15px;
   justify-content: center;
   align-items: center;
   text-align: center; /* Metni sola hizala */

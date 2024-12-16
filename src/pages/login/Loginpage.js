@@ -38,7 +38,7 @@ const onSubmit = (data) => {
                     value:true, message: "Username is required", 
                 }, 
                 minLength: {
-                    value:6, message: "Username cannot be less than 6 characters",
+                    value:3, message: "Username cannot be less than 3 characters",
                 },
                 maxLength: {
                     value:50, message: "Username cannot be more than 50 characters",
