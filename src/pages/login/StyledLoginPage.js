@@ -45,7 +45,8 @@ height:60%;
                 height:25px;
                 weight:25px;
                 margin:10px;
-                cursor:pointer;
+                cursor:pointer;                
+                
                     }
 
                 span{

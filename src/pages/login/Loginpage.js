@@ -51,10 +51,6 @@ const onSubmit = (data) => {
             <div className="form-element"> 
                 <input {...register("password", {
                     required: { value:true, message: "This field is required" },
-                pattern: {
-                    value: /^[0-9]+$/,
-                    message:"Just enter numbers",
-                },
 
                  })} 
                 placeholder="Password" 

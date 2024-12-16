@@ -15,10 +15,12 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow:0px 2px 20px black;
+  width:100vw;
+
 
   .logo-container {
     flex: 0.3;
-    margin-right: 100px;
+    margin-left: 100px;
 
     img{
     height:8vh;
@@ -27,6 +29,7 @@ const StyledHeader = styled.div`
 
   .menu-container {
     flex: 1;
+    
   }
 
   nav {
@@ -48,6 +51,9 @@ const StyledHeader = styled.div`
     color: #fff;
     font-size: 20px;
     text-decoration: none;
+    margin:2px;
+    margin-left:150px;
+    padding:50px;
   }
 
   ul a:hover {
@@ -55,7 +61,9 @@ const StyledHeader = styled.div`
   }
 
   ul a:not(:first-child) {
-    margin-left: 30px;
+    margin:2px;
+    margin-left:-3px;
+    
   }
 
   .bag {
