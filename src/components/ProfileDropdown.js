@@ -101,6 +101,7 @@ const SectionLogout = ({handleLogout}) => {
     <StyledProfileDropdown>
     <label onClick={() => setVisible(true)}> Logout</label>
     <CustomModal
+    type="confirm"
     displayModal={visible}
     onCancel={() => setVisible(false)}
     onOk={handleLogout} 

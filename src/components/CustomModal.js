@@ -9,8 +9,9 @@ position:fixed;
 left:0;
 top:0;
 height:100vh;
-background-color: #b8a9c9;
+background-color:rgba(184, 169, 201, 0.7);
 width:100%;
+z-index:99;
 
 .modal-container{
 background-color: #622569;
@@ -44,7 +45,10 @@ background-color: #c83349;
 
 `;
 
-export const CustomModal = ({displayModal, onOk,onCancel, children }) => {
+
+
+// type : warning, confirm
+export const CustomModal = ({displayModal, onOk,onCancel, children, type }) => {
 
 
     const modalRef=useRef();
@@ -76,8 +80,20 @@ const handleCancel =useCallback((e)=> {
           </div>
 
           <div className="modal-buttons">
+
+{type==='confirm' && ( 
+<>
         <button className="ok-button" onClick={handleOk} >YES </button>
         <button className="no-button" onClick={handleCancel}>NO </button>
+</>
+)}
+
+{type==='warning' && ( 
+<>
+        <button className="ok-button" onClick={handleCancel} >OK </button>
+        
+</>
+)}
           </div>
         </div>  
         </StyledCustomModal>

@@ -16,7 +16,9 @@ const Aboutpage = () =>{
 
      <StyledAboutPage>
 <button onClick={() => setVisible(true)}>Click </button> 
-    <CustomModal displayModal={visible} 
+    <CustomModal 
+    type="confirm"
+    displayModal={visible} 
     onOk= {() => alert('I am here')} 
     onCancel={()=>setVisible(false) } >
 
