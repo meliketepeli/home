@@ -5,10 +5,12 @@ import unvisibleIcon from "../assets/unvisible.png";
 import { useForm } from "react-hook-form";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import {useNavigate } from "react-router-dom";
-
+import { Loader } from "./Loader";
 
 //login form 
 export const SignInForm = ({setVisibleLogin}) => {
+
+const [loading, setLoading]=useState(false);
 
 const [user, setUser] = useLocalStorage('user');
 const navigate = useNavigate();
@@ -21,14 +23,21 @@ const {register,
     } = useForm();
 
 const onSubmit = (data) => {
-    setUser(data.name);
-    navigate('/');
+    setLoading(true);
+    setTimeout(() => {
+        setLoading(false);
+        setUser(data.name);
+        navigate('/');
+
+    }, 3000);
+    
 };
 
     return (
 
     <> 
     
+    <Loader loading={loading} />
     <form onSubmit = {handleSubmit(onSubmit)}>
 
     <div className="form-element"> 

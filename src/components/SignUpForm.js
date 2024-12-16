@@ -6,11 +6,12 @@ import { useForm } from "react-hook-form";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import {useNavigate } from "react-router-dom";
 import { CustomModal } from "../components/CustomModal";
-
+import { Loader } from "./Loader";
 
 //Sign Up
 export const SignUpForm = ({setVisibleLogin}) => {
 
+const [loading, setLoading]=useState(false); 
 const [displayWarningModal, setDisplayWarningModal] = useState(false);
 
 const [errorMsg, setErrorMsg ]=useState('');
@@ -26,10 +27,14 @@ const {
     } = useForm();
 
 const onSubmit = (data) => {
+    setLoading(true);
     if(data.passwordCheck ===data.password){
-        console.log("Successful");
+        setTimeout(() => {
+            console.log("Successful");
+            setLoading(false);
+        }, 3000);
     }
-    //go page
+    //Go page
     else{
         setDisplayWarningModal(true);
         setErrorMsg('Passwords are not the same');
@@ -40,8 +45,7 @@ const onSubmit = (data) => {
     return (
 
     <> 
-    
-   
+    <Loader loading={loading} /> 
     <CustomModal 
     displayModal={displayWarningModal}
     onCancel={() => setDisplayWarningModal(false)}
