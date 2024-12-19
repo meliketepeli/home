@@ -40,6 +40,7 @@ const onSubmit = (data) => {
     <Loader loading={loading} />
     <form onSubmit = {handleSubmit(onSubmit)}>
 
+<div className="login">LOGIN</div>
     <div className="form-element"> 
         <input {...register("name", {required : {
             value:true, message: "Username is required", 
